@@ -9,3 +9,4 @@ urlpatterns = [
     path('announcements/', include('announcements.urls')),
     path('livegame/', include('livegame.urls')),
 ]
+
