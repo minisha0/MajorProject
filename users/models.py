@@ -4,8 +4,6 @@ from django.core.validators import MinValueValidator
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
-
-
 # USER MODEL WITH ROLES
 class User(AbstractUser):
     class Role(models.TextChoices):
@@ -18,6 +16,10 @@ class User(AbstractUser):
         choices=Role.choices,
         default=Role.PLAYER,
     )
+    is_active = models.BooleanField(default=False)
+    activation_sent_at = models.DateTimeField(null=True, blank=True)
+    email_verified = models.BooleanField(default=False)
+    terms_accepted = models.BooleanField(default=False)
 
     def is_player(self):
         return self.role == self.Role.PLAYER
@@ -27,7 +29,6 @@ class User(AbstractUser):
 
     def is_organizer(self):
         return self.role == self.Role.ORGANIZER
-
 
 # PLAYER 
 class PlayerProfile(models.Model):

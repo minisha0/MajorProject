@@ -13,7 +13,7 @@ class UserAdmin(DefaultUserAdmin):
     list_filter = ("role",)
 
 
-# PlayerProfile admin
+# PlayerProfile 
 @admin.register(PlayerProfile)
 class PlayerProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "gender", "body_weight", "weight_class", "created_at")
